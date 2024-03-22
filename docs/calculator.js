@@ -14,14 +14,7 @@ function appendOperator(operator) {
 
 function calculateResult() {
     try {
-        let calculatedResult;
-        if (result.includes('!')) {
-            // Calculate factorial
-            const num = parseInt(result.slice(0, -1));
-            calculatedResult = calculateFactorial(num);
-        } else {
-            calculatedResult = eval(result);
-        }
+        const calculatedResult = eval(result);
         document.getElementById('result').value = calculatedResult;
         result = calculatedResult.toString();
     } catch (error) {
@@ -38,13 +31,19 @@ function updateDisplay() {
     document.getElementById('result').value = result;
 }
 
-function calculateFactorial(n) {
-    if (n === 0 || n === 1) {
-        return 1;
+function calculateFactorial() {
+    let num = parseInt(result);
+    if (isNaN(num) || num < 0) {
+        document.getElementById('result').value = 'Error';
+    } else if (num === 0) {
+        result = '1';
+        document.getElementById('result').value = result;
+    } else {
+        let factorial = 1;
+        for (let i = 2; i <= num; i++) {
+            factorial *= i;
+        }
+        result = factorial.toString();
+        document.getElementById('result').value = result;
     }
-    let result = 1;
-    for (let i = 2; i <= n; i++) {
-        result *= i;
-    }
-    return result;
 }
