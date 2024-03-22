@@ -18,7 +18,7 @@ function calculateResult() {
         if (result.includes('!')) {
             // Calculate factorial
             const num = parseInt(result.slice(0, -1));
-            calculatedResult = factorial(num);
+            calculatedResult = calculateFactorial(num);
         } else {
             calculatedResult = eval(result);
         }
@@ -38,7 +38,7 @@ function updateDisplay() {
     document.getElementById('result').value = result;
 }
 
-function factorial(n) {
+function calculateFactorial(n) {
     if (n === 0 || n === 1) {
         return 1;
     }
