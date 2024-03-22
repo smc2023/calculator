@@ -38,7 +38,7 @@ function updateDisplay() {
     document.getElementById('result').value = result;
 }
 
-function calculateFactorial(n) {
+function factorial(n) {
     if (n === 0 || n === 1) {
         return 1;
     }
